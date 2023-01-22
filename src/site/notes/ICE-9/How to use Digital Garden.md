@@ -1,5 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/ice-9/how-to-use-digital-garden/"}
+{"dg-publish":true,"permalink":"/ice-9/how-to-use-digital-garden/","dgPassFrontmatter":true}
 ---
 
-test
+Official Website:
+https://dg-docs.ole.dev/
