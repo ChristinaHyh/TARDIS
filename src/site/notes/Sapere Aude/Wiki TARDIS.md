@@ -3,7 +3,7 @@
 ---
 
 
-Ahoy! Here is [Christina](https://hyahui.com)'s Wiki TARDIS. ui.com
+Ahoy! Here is [Christina](https://hyahui.com)'s Wiki TARDIS.
 
 
 
