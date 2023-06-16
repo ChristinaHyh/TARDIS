@@ -5,5 +5,12 @@
 
 Ahoy! Here is [Christina](https://hyahui.com)'s Wiki TARDIS.
 
+¡Ay! Aquí está la Wiki TARDIS de Christina.
+
+Ахой! Вот Вики ТАРДИС Кристины.
+
+アホイ！クリスティーナの Wiki TARDIS はこちらです。
+
+
 
 
