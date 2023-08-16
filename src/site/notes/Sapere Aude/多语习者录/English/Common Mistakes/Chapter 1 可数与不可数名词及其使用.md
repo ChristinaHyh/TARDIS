@@ -12,7 +12,7 @@
 **不可数名词：** 无边界或极限
 > An **uncountable noun** means **no boundary or limit can be formed for it**; that is why these nouns are commonly qualities, feelings, and social processes.
 - There was <u>confusion</u> because the government had previously acknowledged that
-the problem was not a fi nancial one.
+the problem was not a financial one.
 
 ## 科研写作过程中不可数名词的误用
 ```ad-abstract
