@@ -87,6 +87,7 @@
 </audio>
 </details>
 <br>
+清音
 <details>
 <summary>pa &nbsp &nbsp pe &nbsp &nbsp pi &nbsp &nbsp po &nbsp &nbsp pu</summary>
 <audio controls>
@@ -95,6 +96,7 @@
 </audio>
 </details>
 <br>
+浊音
 <details>
 <summary>ba &nbsp &nbsp be &nbsp &nbsp bi &nbsp &nbsp bo &nbsp &nbsp bu</summary>
 <audio controls>
@@ -103,6 +105,7 @@
 </audio>
 </details>
 <br>
+浊音
 <details>
 <summary>va &nbsp &nbsp ve &nbsp &nbsp vi &nbsp &nbsp vo &nbsp &nbsp vu</summary>
 <audio controls>
@@ -185,6 +188,7 @@
 </audio>
 </details>
 <br>
+
 ## 单词发音
 
 ![w1w2.png](/img/user/TARDIS/Assets/2023/w1w2.png)
@@ -195,11 +199,13 @@
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w2.mp3">
 </audio>
 <br>
+
 ![w3.png](/img/user/TARDIS/Assets/2023/w3.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w3.mp3">
 </audio>
 <br>
+
 ![w4.png](/img/user/TARDIS/Assets/2023/w4.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w4.mp3">
@@ -210,47 +216,56 @@
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w5.mp3">
 </audio>
 <br>
+
 ![w6.png](/img/user/TARDIS/Assets/2023/w6.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w6.mp3">
 </audio>
 
 <br>
+
 ![w7.png](/img/user/TARDIS/Assets/2023/w7.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w7.mp3">
 </audio>
 <br>
+
 ![w8.png](/img/user/TARDIS/Assets/2023/w8.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w8.mp3">
 </audio>
 <br>
+
 ![w9.png](/img/user/TARDIS/Assets/2023/w9.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w9.mp3">
 </audio>
 <br>
+
 ![w10.png](/img/user/TARDIS/Assets/2023/w10.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w10.mp3">
 </audio>
 <br>
+
 ![w11.png](/img/user/TARDIS/Assets/2023/w11.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w11.mp3">
 </audio>
 <br>
+
 ![w12.png](/img/user/TARDIS/Assets/2023/w12.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w12.mp3">
 </audio>
 <br>
+
 ![w13.png](/img/user/TARDIS/Assets/2023/w13.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w13.mp3">
 </audio>
 <br>
+
 ![w14.png](/img/user/TARDIS/Assets/2023/w14.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w14.mp3">
@@ -276,11 +291,13 @@
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w18.mp3">
 </audio>
 <br>
+
 ![w19.png](/img/user/TARDIS/Assets/2023/w19.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w19.mp3">
 </audio>
 <br>
+
 ![w20.png](/img/user/TARDIS/Assets/2023/w20.png)
 <audio id="audio" controls="" preload="none">
 <source id="mp3" src="https://huangyahui.com/img/user/TARDIS/Assets/2023/w20.mp3">
