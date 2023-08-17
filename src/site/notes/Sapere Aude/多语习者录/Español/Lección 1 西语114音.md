@@ -23,6 +23,7 @@
 </audio>
 </details>
 <br>
+清音
 <details>
 <summary>ca &nbsp &nbsp que &nbsp &nbsp qui &nbsp &nbsp co &nbsp &nbsp cu</summary>
 <audio controls>
@@ -31,6 +32,7 @@
 </audio>
 </details>
 <br>
+浊音
 <details>
 <summary>ga &nbsp &nbsp gue &nbsp &nbsp gui &nbsp &nbsp go &nbsp &nbsp gu</summary>
 <audio controls>
@@ -47,6 +49,7 @@
 </audio>
 </details>
 <br>
+西语中j发[h]音
 <details>
 <summary>ja &nbsp &nbsp je &nbsp &nbsp ji &nbsp &nbsp jo &nbsp &nbsp ju</summary>
 <audio controls>
