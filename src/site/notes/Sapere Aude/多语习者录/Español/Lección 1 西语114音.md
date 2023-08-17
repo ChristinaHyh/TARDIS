@@ -71,6 +71,7 @@
 </audio>
 </details>
 <br>
+清音
 <details>
 <summary>ta &nbsp &nbsp te &nbsp &nbsp ti &nbsp &nbsp to &nbsp &nbsp tu</summary>
 <audio controls>
@@ -79,6 +80,7 @@
 </audio>
 </details>
 <br>
+浊音
 <details>
 <summary>da &nbsp &nbsp de &nbsp &nbsp di &nbsp &nbsp do &nbsp &nbsp du</summary>
 <audio controls>
