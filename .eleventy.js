@@ -38,7 +38,6 @@ module.exports = function (eleventyConfig) {
   let markdownLib = markdownIt({
     breaks: true,
     html: true,
-    linkify: true,
   })
     .use(require("markdown-it-anchor"), {
       slugify: headerToId,
@@ -99,25 +98,25 @@ module.exports = function (eleventyConfig) {
           let icon;
           let color;
           let nbLinesToSkip = 0
-          for (let i = 0; i < 4; i++) {
+          for (let i = 0; i<4; i++) {
             if (parts[i] && parts[i].trim()) {
               let line = parts[i] && parts[i].trim().toLowerCase()
               if (line.startsWith("title:")) {
                 titleLine = line.substring(6);
-                nbLinesToSkip++;
+                nbLinesToSkip ++;
               } else if (line.startsWith("icon:")) {
                 icon = line.substring(5);
-                nbLinesToSkip++;
+                nbLinesToSkip ++;
               } else if (line.startsWith("collapse:")) {
                 collapsible = true
                 collapse = line.substring(9);
                 if (collapse && collapse.trim().toLowerCase() == 'open') {
                   collapsed = false
                 }
-                nbLinesToSkip++;
+                nbLinesToSkip ++;
               } else if (line.startsWith("color:")) {
                 color = line.substring(6);
-                nbLinesToSkip++;
+                nbLinesToSkip ++;
               }
             }
           }
@@ -127,17 +126,18 @@ module.exports = function (eleventyConfig) {
           </svg>
           </div>` : "";
           const titleDiv = titleLine
-            ? `<div class="callout-title"><div class="callout-title-inner">${titleLine}</div>${foldDiv}</div>`
-            : "";
+              ? `<div class="callout-title"><div class="callout-title-inner">${titleLine}</div>${foldDiv}</div>`
+              : "";
           let collapseClasses = titleLine && collapsible ? 'is-collapsible' : ''
           if (collapsible && collapsed) {
             collapseClasses += " is-collapsed"
           }
 
-          let res = `<div data-callout-metadata class="callout ${collapseClasses}" data-callout="${token.info.substring(3)
-            }">${titleDiv}\n<div class="callout-content">${md.render(
-              parts.slice(nbLinesToSkip).join("\n")
-            )}</div></div>`;
+          let res = `<div data-callout-metadata class="callout ${collapseClasses}" data-callout="${
+            token.info.substring(3)
+          }">${titleDiv}\n<div class="callout-content">${md.render(
+            parts.slice(nbLinesToSkip).join("\n")
+          )}</div></div>`;
           return res
         }
 
@@ -152,21 +152,7 @@ module.exports = function (eleventyConfig) {
         };
       md.renderer.rules.image = (tokens, idx, options, env, self) => {
         const imageName = tokens[idx].content;
-        //"image.png|metadata?|width"
-        const [fileName, ...widthAndMetaData] = imageName.split("|");
-        const lastValue = widthAndMetaData[widthAndMetaData.length - 1];
-        const lastValueIsNumber = !isNaN(lastValue);
-        const width = lastValueIsNumber ? lastValue : null;
-
-        let metaData = "";
-        if (widthAndMetaData.length > 1) {
-          metaData = widthAndMetaData.slice(0, widthAndMetaData.length - 1).join(" ");
-        }
-
-        if (!lastValueIsNumber) {
-          metaData += ` ${lastValue}`;
-        }
-
+        const [fileName, width] = imageName.split("|");
         if (width) {
           const widthIndex = tokens[idx].attrIndex("width");
           const widthAttr = `${width}px`;
@@ -207,11 +193,6 @@ module.exports = function (eleventyConfig) {
     .use(userMarkdownSetup);
 
   eleventyConfig.setLibrary("md", markdownLib);
-
-  eleventyConfig.addFilter("isoDate", function (date) {
-    return date && date.toISOString();
-  });
-
 
   eleventyConfig.addFilter("link", function (str) {
     return (
@@ -259,10 +240,9 @@ module.exports = function (eleventyConfig) {
           deadLink = true;
         }
 
-        if (deadLink) {
-          return `<a class="internal-link is-unresolved" href="/404">${title}</a>`;
-        }
-        return `<a class="internal-link" data-note-icon="${noteIcon}" href="${permalink}${headerLinkPath}">${title}</a>`;
+        return `<a class="internal-link ${
+          deadLink ? "is-unresolved" : ""
+        }" ${deadLink ? "" : 'data-note-icon="' + noteIcon + '"'} href="${permalink}${headerLinkPath}">${title}</a>`;
       })
     );
   });
@@ -315,30 +295,28 @@ module.exports = function (eleventyConfig) {
 
         let titleDiv = "";
         let calloutType = "";
-        let calloutMetaData = "";
         let isCollapsable;
         let isCollapsed;
-        const calloutMeta = /\[!([\w-]*)\|?(\s?.*)\](\+|\-){0,1}(\s?.*)/;
+        const calloutMeta = /\[!([\w-]*)\](\+|\-){0,1}(\s?.*)/;
         if (!content.match(calloutMeta)) {
           continue;
         }
 
         content = content.replace(
           calloutMeta,
-          function (metaInfoMatch, callout, metaData, collapse, title) {
+          function (metaInfoMatch, callout, collapse, title) {
             isCollapsable = Boolean(collapse);
             isCollapsed = collapse === "-";
             const titleText = title.replace(/(<\/{0,1}\w+>)/, "")
               ? title
               : `${callout.charAt(0).toUpperCase()}${callout
-                .substring(1)
-                .toLowerCase()}`;
+                  .substring(1)
+                  .toLowerCase()}`;
             const fold = isCollapsable
               ? `<div class="callout-fold"><i icon-name="chevron-down"></i></div>`
               : ``;
 
             calloutType = callout;
-            calloutMetaData = metaData;
             titleDiv = `<div class="callout-title"><div class="callout-title-inner">${titleText}</div>${fold}</div>`;
             return "";
           }
@@ -349,7 +327,6 @@ module.exports = function (eleventyConfig) {
         blockquote.classList.add(isCollapsable ? "is-collapsible" : "");
         blockquote.classList.add(isCollapsed ? "is-collapsed" : "");
         blockquote.setAttribute("data-callout", calloutType.toLowerCase());
-        calloutMetaData && blockquote.setAttribute("data-callout-metadata", calloutMetaData);
         blockquote.innerHTML = `${titleDiv}\n<div class="callout-content">${content}</div>`;
       }
     };
@@ -359,60 +336,47 @@ module.exports = function (eleventyConfig) {
     return str && parsed.innerHTML;
   });
 
-  function fillPictureSourceSets(src, cls, alt, meta, width, imageTag) {
-    imageTag.tagName = "picture";
-    let html = `<source
-      media="(max-width:480px)"
-      srcset="${meta.webp[0].url}"
-      type="image/webp"
-      />
-      <source
-      media="(max-width:480px)"
-      srcset="${meta.jpeg[0].url}"
-      />
-      `
-    if (meta.webp && meta.webp[1] && meta.webp[1].url) {
-      html += `<source
-        media="(max-width:1920px)"
-        srcset="${meta.webp[1].url}"
-        type="image/webp"
-        />`
-    }
-    if (meta.jpeg && meta.jpeg[1] && meta.jpeg[1].url) {
-      html += `<source
-        media="(max-width:1920px)"
-        srcset="${meta.jpeg[1].url}"
-        />`
-    }
-    html += `<img
-      class="${cls.toString()}"
-      src="${src}"
-      alt="${alt}"
-      width="${width}"
-      />`;
-    imageTag.innerHTML = html;
-  }
-
-
   eleventyConfig.addTransform("picture", function (str) {
     const parsed = parse(str);
-    for (const imageTag of parsed.querySelectorAll(".cm-s-obsidian img")) {
-      const src = imageTag.getAttribute("src");
+    for (const t of parsed.querySelectorAll(".cm-s-obsidian img")) {
+      const src = t.getAttribute("src");
       if (src && src.startsWith("/") && !src.endsWith(".svg")) {
-        const cls = imageTag.classList.value;
-        const alt = imageTag.getAttribute("alt");
-        const width = imageTag.getAttribute("width") || '';
+        const cls = t.classList;
+        const alt = t.getAttribute("alt");
 
         try {
           const meta = transformImage(
-            "./src/site" + decodeURI(imageTag.getAttribute("src")),
+            "./src/site" + decodeURI(t.getAttribute("src")),
             cls.toString(),
             alt,
             ["(max-width: 480px)", "(max-width: 1024px)"]
           );
 
           if (meta) {
-            fillPictureSourceSets(src, cls, alt, meta, width, imageTag);
+            t.tagName = "picture";
+            t.innerHTML = `<source
+      media="(max-width:480px)"
+      srcset="${meta.webp[0].url}"
+      type="image/webp"
+    />
+    <source
+      media="(max-width:480px)"
+      srcset="${meta.jpeg[0].url}"
+    />
+    <source
+      media="(max-width:1920px)"
+      srcset="${meta.webp[1].url}"
+      type="image/webp"
+    />
+    <source
+      media="(max-width:1920px)"
+      srcset="${meta.jpeg[1].url}"
+    />
+    <img
+      class="${cls.toString()}"
+      src="${src}"
+      alt="${alt}"
+    />`;
           }
         } catch {
           // Make it fault tolarent.
@@ -469,12 +433,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/site/img");
   eleventyConfig.addPassthroughCopy("src/site/scripts");
   eleventyConfig.addPassthroughCopy("src/site/styles/_theme.*.css");
-  eleventyConfig.addPlugin(faviconsPlugin, { outputDir: "dist" });
+  eleventyConfig.addPlugin(faviconsPlugin, { destination: "dist" });
   eleventyConfig.addPlugin(tocPlugin, {
     ul: true,
     tags: ["h1", "h2", "h3", "h4", "h5", "h6"],
   });
-
+ 
 
   eleventyConfig.addFilter("dateToZulu", function (date) {
     if (!date) return "";
@@ -493,7 +457,7 @@ module.exports = function (eleventyConfig) {
     return variable;
   });
 
-  eleventyConfig.addPlugin(pluginRss, {
+ eleventyConfig.addPlugin(pluginRss, {
     posthtmlRenderOptions: {
       closingSingleTag: "slash",
       singleTags: ["link"],
@@ -510,7 +474,7 @@ module.exports = function (eleventyConfig) {
     },
     templateFormats: ["njk", "md", "11ty.js"],
     htmlTemplateEngine: "njk",
-    markdownTemplateEngine: false,
+    markdownTemplateEngine: "njk",
     passthroughFileCopy: true,
   };
 };
